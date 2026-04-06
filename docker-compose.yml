@@ -1,0 +1,34 @@
+services:
+  logseq:
+    build:
+      context: .
+      dockerfile: dockerfile.webtop
+    image: logseq-local:webtop
+    privileged: true
+    environment:
+      - CUSTOM_USER=${LOGSEQ_USER}
+      - PASSWORD=${LOGSEQ_PASSWORD}
+      - RESTART_APP=/usr/local/bin/Logseq
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./config:/config
+      - ./notes:/notes
+    expose:
+      - "3000"
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - logseq
+    restart: unless-stopped
+
+volumes:
+  caddy_data:

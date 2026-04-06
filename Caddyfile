@@ -1,0 +1,12 @@
+# Option 1: with a domain (automatic HTTPS via Let's Encrypt)
+# Replace with your actual domain and uncomment:
+# notes.yourdomain.com {
+#     reverse_proxy logseq:3000
+# }
+
+# Option 2: local network / no domain (self-signed cert)
+# Browser will show a warning on first visit — click "Accept risk"
+:443 {
+    tls internal
+    reverse_proxy logseq:3000
+}

@@ -1,1 +1,1 @@
-/usr/local/bin/Logseq --no-sandbox
+/usr/local/bin/Logseq --no-sandbox --disable-gpu --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage

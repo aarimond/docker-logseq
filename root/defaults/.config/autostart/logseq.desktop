@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Logseq
+Exec=/usr/local/bin/Logseq --no-sandbox --disable-gpu --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
