@@ -50,6 +50,18 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
 
 COPY /root /
 
+# Install Logseq autostart system-wide so it works regardless of config volume state
+RUN mkdir -p /etc/xdg/autostart && \
+    cat > /etc/xdg/autostart/logseq.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=Logseq
+Exec=/usr/local/bin/Logseq --no-sandbox --disable-gpu --enable-unsafe-swiftshader --use-gl=swiftshader --disable-dev-shm-usage
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+EOF
+
 EXPOSE 3000 3001
 
 VOLUME /config
