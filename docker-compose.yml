@@ -5,6 +5,7 @@ services:
       dockerfile: dockerfile.webtop
     image: logseq-local:webtop
     privileged: true
+    shm_size: '256m'
     environment:
       - CUSTOM_USER=${LOGSEQ_USER}
       - PASSWORD=${LOGSEQ_PASSWORD}
